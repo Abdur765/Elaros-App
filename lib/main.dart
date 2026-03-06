@@ -1,22 +1,28 @@
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
-import 'package:elaros_mobile_app/app.dart';
-import 'package:provider/provider.dart';
-import 'package:elaros_mobile_app/ui/home/view_models/health_view_model.dart';
-import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart';
-import 'package:sqflite/sqflite.dart';
+import 'views/notifications_screen.dart';
+import 'views/alert_preferences_screen.dart';
+import 'views/dashboard_screen.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
+  runApp(const MyApp());
+}
 
-  if (kIsWeb) {
-    databaseFactory = databaseFactoryFfiWeb;
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+
+      // FIRST SCREEN
+      home: const NotificationsScreen(),
+
+      routes: {
+        '/notifications': (context) => const NotificationsScreen(),
+        '/preferences': (context) => const AlertPreferencesScreen(),
+        '/dashboard': (context) => const DashboardScreen(),
+      },
+    );
   }
-
-  runApp(
-    ChangeNotifierProvider(
-      create: (_) => HealthViewModel(),
-      child: const App(),
-    ),
-  );
 }
