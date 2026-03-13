@@ -1,5 +1,7 @@
 import 'package:elaros_mobile_app/ui/common/theme/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:elaros_mobile_app/data/local/services/auth_service.dart';
+import 'package:elaros_mobile_app/ui/auth/login_screen.dart';
 import 'package:elaros_mobile_app/ui/home/wigets/home_screen.dart';
 
 class App extends StatelessWidget {
@@ -9,11 +11,12 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-  theme: AppTheme.light,
-  darkTheme: AppTheme.dark,
-  themeMode: ThemeMode.system, 
-  
-      home: const HomeScreen(),
+      theme: AppTheme.light,
+      darkTheme: AppTheme.dark,
+      themeMode: ThemeMode.system,
+      home: AuthService.instance.isLoggedIn
+          ? const HomeScreen()
+          : const LoginScreen(),
     );
   }
 }

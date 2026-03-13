@@ -41,6 +41,8 @@ dependencies:
   sqflite: ^2.4.2
   cristalyse: ^1.17.3
   sqflite_common_ffi_web: ^1.1.1
+  crypto: ^3.0.6
+  shared_preferences: ^2.3.4
 
 dev_dependencies:
   flutter_test:
@@ -66,6 +68,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/database/health_lite.db
+    - assets/database/main.db
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
